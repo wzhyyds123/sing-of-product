@@ -4,7 +4,7 @@
 	(
 	'columns'=>Array
 		(
-		'user'=>Array
+		'users'=>Array
 			(
 			0=>'id',
 			1=>'email',
