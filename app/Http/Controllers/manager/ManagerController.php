@@ -11,35 +11,7 @@ use Illuminate\Http\Request;
 
 class ManagerController extends Controller
 {
-    /**yjx
-     * 添加
-     *
-     * @param Request $request
-     * @return false|\Illuminate\Http\JsonResponse
-     *
-     */
-    public static function add(Request $request)
-    {
-        try {
-            $collegename = $request['collegename'];
-            $count = Users::checknumber($collegename);
-            if ($count == 0) ;
 
-            $registeredInfo = $request->except('password_confirmation');
-            $registeredInfo['password'] = bcrypt($registeredInfo['password']);
-            $registeredInfo['collegename'] = $registeredInfo['collegename'];
-            $student_id = Users::createUser($registeredInfo);
-
-            return  $student_id ?
-                json_success('注册成功!',$student_id,200  ) :
-                json_fail('注册失败!',null,100  ) ;
-
-
-        } catch (\Exception $e) {
-            logError("学校添加失败！", [$e->getMessage()]);
-            return false;
-        }
-    }
 
     /**yjx
      * 修改学校名称
